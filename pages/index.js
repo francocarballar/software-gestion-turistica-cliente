@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { Formulario } from '../src/components/Formulario'
 import { Grupos } from '../src/components/Grupos'
 
 export default function Home () {
+  const [nombreGrupo, setNombreGrupo] = useState('')
   return (
     <>
       <Head>
@@ -13,12 +14,14 @@ export default function Home () {
       </Head>
 
       <main className={styles.main}>
-        <section className={styles.section_formulario}>
-          <Formulario />
-        </section>
-        <section className={styles.section_grupos}>
-          <Grupos />
-        </section>
+        <div className={styles.container_sections}>
+          <section className={styles.section_formulario}>
+            <Formulario nombreGrupo={nombreGrupo} />
+          </section>
+          <section className={styles.section_grupos}>
+            <Grupos setNombreGrupo={setNombreGrupo} />
+          </section>
+        </div>
       </main>
     </>
   )

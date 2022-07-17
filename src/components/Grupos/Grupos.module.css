@@ -1,0 +1,90 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 15px;
+  width: 100%;
+  height: auto;
+}
+
+.container div {
+  width: 100%;
+}
+
+.agregarGrupo {
+  margin-bottom: 10px;
+  color: var(--primary-color);
+  font-size: var(--font-size__laptop);
+  cursor: pointer;
+}
+
+.containerAgregarGrupos {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  justify-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.containerAgregarGrupos input {
+  padding: 10px 15px;
+  width: 100%;
+  color: var(--text-color);
+  font-size: var(--font-size__mobile);
+  border: 1px solid grey;
+  border-radius: 5px;
+  outline: none;
+}
+
+.containerAgregarGrupos input:focus {
+  border: 1px solid var(--primary-color);
+}
+
+#buttonAgregarGrupo {
+  width: 10rem;
+  height: auto;
+  border-radius: 1rem;
+  background-color: var(--primary-color);
+  font-size: 1.5rem;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: white;
+  border-color: transparent;
+  box-shadow: 0rem 0.2rem 0.8rem 0.1rem rgb(0 0 0 / 60%);
+  cursor: pointer;
+}
+
+#buttonAgregarGrupo:hover {
+  color: white;
+  background-color: #138bbe;
+  box-shadow: none;
+}
+
+#buttonAgregarGrupo:active {
+  transform: scale(0.9);
+}
+
+.container .grupos {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  color: var(--text-color);
+  font-size: var(--font-size__laptop);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.container .grupos:hover {
+  background-color: rgb(0, 0, 0, 10%);
+}
+
+.container div:target {
+  background-color: var(--primary-color);
+}
+
+.container .grupos span {
+  margin-right: 10px;
+}

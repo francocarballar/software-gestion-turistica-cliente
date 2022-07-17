@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Link from 'next/link'
 import styles from './NavBar.module.css'
 
 function NavBar () {
@@ -28,16 +29,20 @@ function NavBar () {
     <nav className={styles.navBar}>
       <ul>
         <li className={styles.menu} title='Menu'>
-          <span class='material-symbols-outlined'>menu</span>
+          <span className='material-symbols-outlined'>menu</span>
         </li>
-        <li title='Home' onClick={clickHome} style={styleHome}>
-          <span className='material-symbols-outlined'>home</span>
-        </li>
-        <li title='Rooming' onClick={clickBed} style={styleBed}>
-          <span className='material-symbols-outlined'>
-            airline_seat_individual_suite
-          </span>
-        </li>
+        <Link href='/'>
+          <li title='Home' onClick={clickHome} style={styleHome}>
+            <span className='material-symbols-outlined'>home</span>
+          </li>
+        </Link>
+        <Link href='/rooming'>
+          <li title='Rooming' onClick={clickBed} style={styleBed}>
+            <span className='material-symbols-outlined'>
+              airline_seat_individual_suite
+            </span>
+          </li>
+        </Link>
         <li
           className={styles.settings}
           title='Settings'

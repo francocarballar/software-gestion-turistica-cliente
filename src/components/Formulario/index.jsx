@@ -29,6 +29,7 @@ function Formulario ({ nombreGrupo }) {
           <input type='number' name='DNI' id='DNI' placeholder='DNI' required />
         </label>
         <label htmlFor='Nacimiento'>
+          Fecha de Nacimiento
           <input
             type='date'
             name='Nacimiento'
@@ -64,6 +65,7 @@ function Formulario ({ nombreGrupo }) {
           />
         </label>
         <label htmlFor='FechaIngreso'>
+          Fecha de Ingreso
           <input
             type='date'
             name='FechaIngreso'
@@ -73,6 +75,7 @@ function Formulario ({ nombreGrupo }) {
           />
         </label>
         <label htmlFor='FechaEgrego'>
+          Fecha de Egreso
           <input
             type='date'
             name='FechaEgrego'
