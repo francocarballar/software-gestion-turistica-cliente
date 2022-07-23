@@ -1,30 +1,79 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Grupos.module.css'
+import axios from 'axios'
 
-function Grupos ({ setNombreGrupo }) {
+function Grupos ({ setNombreGrupo, userID }) {
   const [id, setId] = useState('')
   const [statusClick, setClick] = useState(false)
   const [statusContainerAgregarGrupos, setContainerAgragarGrupos] = useState(
     false
   )
   const [inputGroupValue, setInputGroupValue] = useState('')
-  const clickGrupo = e => {
-    const click = e.target
-    const text = e.target.innerText
-    const textTransform = text.replace('folder', '')
-    click.setAttribute('id', textTransform)
-    const id = e.target.id
-    setId(id)
-    setClick(!statusClick)
-    if (statusClick === false) {
-      e.target.style =
-        'color: var(--background-color); background-color: var(--primary-color)'
-    } else if (statusClick === true) {
-      e.target.style =
-        'color: var(--text-color); background-color: var(--background-secondary-color)'
+  let groups_API = 'http://localhost:1337/api/groups'
+  useEffect(() => {
+    const getGroups = async () => {
+      try {
+        await axios.get(groups_API).then(response => {
+          const data = response.data.data
+          data.map(elem => {
+            const nombreGrupo = elem.attributes.NombreGrupo
+            const containerGrupos = document.querySelector('.container_grupos')
+            const grupo = document.createElement('div')
+            grupo.setAttribute('class', 'Grupos_grupos__eloGA')
+            grupo.innerText = `${nombreGrupo}`
+
+            const span = document.createElement('span')
+            span.setAttribute('class', 'material-symbols-outlined')
+            span.innerText = 'folder'
+            grupo.appendChild(span)
+            containerGrupos.appendChild(grupo)
+          })
+        })
+      } catch (error) {
+        console.log(error)
+      }
     }
-    setNombreGrupo(textTransform)
+    getGroups()
+    return () => {
+      groups_API = ''
+    }
+  }, [])
+  const crearGrupo = async () => {
+    await axios
+      .post(groups_API, {
+        headers: {
+          'Content-Type': 'application/json',
+          Athorization: `Bearer ${userID}`
+        },
+        data: {
+          NombreGrupo: `${inputGroupValue}`
+        }
+      })
+      .catch(error => console.log(error))
   }
+  useEffect(() => {
+    const clickGrupo = e => {
+      const click = e.target
+      const text = e.target.innerText
+      const textTransform = text.replace('folder', '')
+      click.setAttribute('id', textTransform)
+      const id = e.target.id
+      setId(id)
+      setClick(!statusClick)
+      if (statusClick === false) {
+        e.target.style =
+          'color: var(--background-color); background-color: var(--primary-color)'
+      } else if (statusClick === true) {
+        e.target.style =
+          'color: var(--text-color); background-color: var(--background-secondary-color)'
+      }
+      setNombreGrupo(textTransform)
+    }
+    const grupo = document.querySelectorAll('.container_grupos div')
+    grupo.forEach(elem => {
+      elem.addEventListener('click', clickGrupo)
+    })
+  })
   const agregarGrupo = () => {
     setContainerAgragarGrupos(true)
   }
@@ -33,13 +82,13 @@ function Grupos ({ setNombreGrupo }) {
     const grupo = document.createElement('div')
     grupo.setAttribute('class', 'Grupos_grupos__eloGA')
     grupo.innerText = `${inputGroupValue}`
-    grupo.setAttribute('onclick', clickGrupo)
     const span = document.createElement('span')
     span.setAttribute('class', 'material-symbols-outlined')
     span.innerText = 'folder'
     grupo.appendChild(span)
     containerGrupos.appendChild(grupo)
     setContainerAgragarGrupos(false)
+    crearGrupo()
   }
   return (
     <div className={styles.container}>

@@ -1,0 +1,133 @@
+.container_settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: fixed;
+  bottom: 64px;
+  padding: 25px;
+  width: 100%;
+  min-height: calc(100vh - 64px);
+  background-color: var(--background-secondary-color);
+  z-index: 400;
+}
+
+.container_settings p {
+  color: var(--text-color);
+  font-size: 1.6rem;
+  margin: 10px;
+}
+
+.container_settings ul {
+  list-style: none;
+}
+
+.container_settings div {
+  width: 100%;
+}
+
+.container_colours {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  justify-items: center;
+  place-items: center;
+  width: 100%;
+}
+
+.container_colours li {
+  margin: 15px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.container_colours li:hover {
+  transform: scale(1.5);
+}
+
+.purple {
+  background-color: var(--purple);
+}
+
+.yellow {
+  background-color: var(--yellow);
+}
+
+.orange {
+  background-color: var(--orange);
+}
+
+.red {
+  background-color: var(--red);
+}
+
+.pink {
+  background-color: var(--pink);
+}
+
+.violet {
+  background-color: var(--violet);
+}
+
+.lightblue {
+  background-color: var(--lightblue);
+}
+
+.aquamarine {
+  background-color: var(--aquamarine);
+}
+
+.green {
+  background-color: var(--green);
+}
+
+.container_darkMode {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.container_darkMode .toggle_dark_mode {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 20px;
+  border: 2px solid var(--text-color);
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.container_darkMode #theme {
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--text-color);
+  border-radius: 50%;
+  transition: left 0.5s, transform 0.5s;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .container_colours {
+    grid-template-columns: 16% 16% 16% 16% 16% 16%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container_settings {
+    bottom: 0;
+    left: 64px;
+    max-width: 350px;
+    min-height: 150px;
+    max-height: 500px;
+    background-color: var(--background-color);
+  }
+
+  .container_colours {
+    grid-template-columns: 20% 20% 20% 20% 20%;
+  }
+}

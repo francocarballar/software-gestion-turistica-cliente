@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
 import Script from 'next/script'
 import '../styles/globals.css'
 import { NavBar } from '../src/components/NavBar'
+import { Settings } from '../src/components/Settings'
 
 function MyApp ({ Component, pageProps }) {
+  const [statusSettings, setSettings] = useState(false)
   return (
     <>
       <Head>
@@ -34,7 +36,8 @@ function MyApp ({ Component, pageProps }) {
           href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,200'
         />
       </Head>
-      <NavBar />
+      <Settings statusSettings={statusSettings} setSettings={setSettings} />
+      <NavBar setSettings={setSettings} statusSettings={statusSettings} />
       <Component {...pageProps} />
       <Script
         defer

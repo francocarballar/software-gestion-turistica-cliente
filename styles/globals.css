@@ -11,6 +11,57 @@
   --scrollbar-thumb__background-color: #3f474d;
   --scrollbar-thum__hover: #333a3f;
   --scrollbar-track__background-color: #566169;
+  --purple: rgb(123, 104, 238);
+  --yellow: rgb(255, 161, 47);
+  --orange: rgb(255, 87, 34);
+  --red: rgb(244, 44, 44);
+  --pink: rgb(255, 0, 252);
+  --violet: rgb(65, 105, 225);
+  --lightblue: rgb(10, 180, 255);
+  --aquamarine: rgb(7, 160, 146);
+  --green: rgb(46, 165, 44);
+}
+
+[data-theme='true'] {
+  --background-color: #2a333b;
+  --background-secondary-color: #1d262e;
+  --text-color: #fff;
+}
+
+[data-color='purple'] {
+  --primary-color: rgb(123, 104, 238);
+}
+
+[data-color='yellow'] {
+  --primary-color: rgb(255, 161, 47);
+}
+
+[data-color='orange'] {
+  --primary-color: rgb(255, 87, 34);
+}
+
+[data-color='red'] {
+  --primary-color: rgb(244, 44, 44);
+}
+
+[data-color='pink'] {
+  --primary-color: rgb(255, 0, 252);
+}
+
+[data-color='violet'] {
+  --primary-color: rgb(65, 105, 225);
+}
+
+[data-color='lightblue'] {
+  --primary-color: rgb(10, 180, 255);
+}
+
+[data-color='aquamarine'] {
+  --primary-color: rgb(7, 160, 146);
+}
+
+[data-color='green'] {
+  --primary-color: rgb(46, 165, 44);
 }
 
 * {
@@ -59,4 +110,16 @@ main {
 #__next {
   width: 100%;
   height: 100%;
+}
+
+body.dark #Settings_theme__PstXR {
+  left: calc(100% - 15px);
+}
+
+body.dark .Home_section_formulario__WRdMd input {
+  background-color: var(--background-color);
+}
+
+body.dark .Home_section_formulario__WRdMd select {
+  background-color: var(--background-color);
 }

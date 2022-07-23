@@ -11,6 +11,7 @@
 .titleGrupo {
   margin: 15px;
   text-align: left;
+  color: var(--text-color);
   font-size: 2rem;
 }
 
@@ -62,6 +63,7 @@
 
 #enviar {
   margin-top: 15px;
+  padding: 8px 25px;
   width: 10rem;
   height: auto;
   border-radius: 1rem;
@@ -72,6 +74,7 @@
   border-color: transparent;
   box-shadow: 0rem 0.2rem 0.8rem 0.1rem rgb(0 0 0 / 60%);
   cursor: pointer;
+  text-align: center;
 }
 
 #enviar:hover {

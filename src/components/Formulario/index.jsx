@@ -1,12 +1,53 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Formulario.module.css'
+import axios from 'axios'
 
-function Formulario ({ nombreGrupo }) {
+function Formulario ({ nombreGrupo, userID }) {
   const grupo = `Grupo ${nombreGrupo}`
+  const [Apellido, setApellido] = useState('')
+  const [Nombre, setNombre] = useState('')
+  const [DNI, setDNI] = useState('')
+  const [Nacimiento, setNacimiento] = useState('')
+  const [TipoHabitacion, setTipoHabitacion] = useState('')
+  const [NumeroHabitacion, setNumeroHabitacion] = useState('')
+  const [FechaIngreso, setFechaIngreso] = useState('')
+  const [FechaEgreso, setFechaEgreso] = useState('')
+  const tables_API = 'http://localhost:1337/api/tables'
+  useEffect(() => {
+    const inputTipoHabitacion = document.querySelector('#TipoHabitacion')
+    setTipoHabitacion(inputTipoHabitacion.value)
+  })
+  const submitForm = async e => {
+    e.preventDefault()
+    try {
+      await axios.post(tables_API, {
+        headers: {
+          'Content-Type': 'application/json',
+          Athorization: `Bearer ${userID}`
+        },
+        data: {
+          Apellido: Apellido,
+          Nombre: Nombre,
+          DNI: DNI,
+          Nacimiento: Nacimiento,
+          TipoHabitacion: TipoHabitacion,
+          NumeroHabitacion: NumeroHabitacion,
+          FechaDeIngreso: FechaIngreso,
+          FechaDeEgreso: FechaEgreso
+        }
+      })
+    } catch (error) {
+      console.log(error)
+    }
+    const input = document.querySelectorAll(
+      '.Formulario_formulario__qJLZu input'
+    )
+    input.forEach(elem => (elem.value = ''))
+  }
   return (
     <>
       <h4 className={styles.titleGrupo}>{grupo}</h4>
-      <form action='' method='' className={styles.formulario}>
+      <form onSubmit={submitForm} className={styles.formulario}>
         <label htmlFor='Apellido'>
           <input
             type='text'
@@ -14,6 +55,7 @@ function Formulario ({ nombreGrupo }) {
             id='Apellido'
             placeholder='Apellido'
             required
+            onChange={e => setApellido(e.target.value)}
           />
         </label>
         <label htmlFor='Nombre'>
@@ -23,10 +65,18 @@ function Formulario ({ nombreGrupo }) {
             id='Nombre'
             placeholder='Nombre'
             required
+            onChange={e => setNombre(e.target.value)}
           />
         </label>
         <label htmlFor='DNI'>
-          <input type='number' name='DNI' id='DNI' placeholder='DNI' required />
+          <input
+            type='number'
+            name='DNI'
+            id='DNI'
+            placeholder='DNI'
+            required
+            onChange={e => setDNI(e.target.value)}
+          />
         </label>
         <label htmlFor='Nacimiento'>
           Fecha de Nacimiento
@@ -36,9 +86,14 @@ function Formulario ({ nombreGrupo }) {
             id='Nacimiento'
             placeholder='Feach de nacimiento'
             required
+            onChange={e => setNacimiento(e.target.value)}
           />
         </label>
-        <select name='TipoHabitacion'>
+        <select
+          name='TipoHabitacion'
+          id='TipoHabitacion'
+          onChange={e => setTipoHabitacion(e.target.value)}
+        >
           <option value='Doble Twin' name='Doble Twin'>
             Doble Twin
           </option>
@@ -61,7 +116,7 @@ function Formulario ({ nombreGrupo }) {
             name='NumeroHabitacion'
             id='NumeroHabitacion'
             placeholder='Numero de habitación'
-            required
+            onChange={e => setNumeroHabitacion(e.target.value)}
           />
         </label>
         <label htmlFor='FechaIngreso'>
@@ -72,6 +127,7 @@ function Formulario ({ nombreGrupo }) {
             id='FechaIngreso'
             placeholder='Fecha de Ingreso'
             required
+            onChange={e => setFechaIngreso(e.target.value)}
           />
         </label>
         <label htmlFor='FechaEgrego'>
@@ -79,13 +135,16 @@ function Formulario ({ nombreGrupo }) {
           <input
             type='date'
             name='FechaEgrego'
-            id='FechaEgrego'
+            id='FechaEgreso'
             placeholder='Fecha de Egrego'
             required
+            onChange={e => setFechaEgreso(e.target.value)}
           />
         </label>
         <label htmlFor='Enviar' className={styles.labelEnviar}>
-          <input type='submit' name='Enviar' id={styles.enviar} />
+          <button type='submit' name='Enviar' id={styles.enviar}>
+            Enviar
+          </button>
         </label>
       </form>
     </>

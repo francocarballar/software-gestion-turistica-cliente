@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import styles from './NavBar.module.css'
 
-function NavBar () {
+function NavBar ({ setSettings, statusSettings }) {
   const styleSpan = {
     color: 'var(--background-color)',
     backgroundColor: 'var(--primary-color)'
@@ -21,9 +21,15 @@ function NavBar () {
     setStyleSettings({})
   }
   const clickSettings = () => {
+    if (statusSettings === false) {
+      setStyleSettings(styleSpan)
+    }
+    if (statusSettings === true) {
+      setStyleSettings({})
+    }
     setStyleHome({})
     setStyleBed({})
-    setStyleSettings(styleSpan)
+    setSettings(!statusSettings)
   }
   return (
     <nav className={styles.navBar}>

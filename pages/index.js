@@ -1,11 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import axios from 'axios'
 import { Formulario } from '../src/components/Formulario'
 import { Grupos } from '../src/components/Grupos'
 
 export default function Home () {
   const [nombreGrupo, setNombreGrupo] = useState('')
+  const [userID, setUserID] = useState([])
+  const auth_API = 'http://localhost:1337/api/auth/local'
+  useEffect(() => {
+    const api = async () => {
+      try {
+        await axios
+          .post(auth_API, {
+            identifier: 'abiagusturismo@gmail.com',
+            password: 'Sarasasasa4'
+          })
+          .then(response => {
+            setUserID(response.data.jwt)
+          })
+          .catch(error => {
+            console.log('An error occurred:', error.response)
+          })
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    api()
+  })
   return (
     <>
       <Head>
@@ -16,10 +39,10 @@ export default function Home () {
       <main className={styles.main}>
         <div className={styles.container_sections}>
           <section className={styles.section_formulario}>
-            <Formulario nombreGrupo={nombreGrupo} />
+            <Formulario nombreGrupo={nombreGrupo} userID={userID} />
           </section>
           <section className={styles.section_grupos}>
-            <Grupos setNombreGrupo={setNombreGrupo} />
+            <Grupos setNombreGrupo={setNombreGrupo} userID={userID} />
           </section>
         </div>
       </main>
