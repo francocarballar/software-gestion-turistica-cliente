@@ -14,8 +14,8 @@ export default function Home () {
       try {
         await axios
           .post(auth_API, {
-            identifier: 'abiagusturismo@gmail.com',
-            password: 'Sarasasasa4'
+            identifier: 'juanitoalcachofa@gmail.com',
+            password: 'Password123'
           })
           .then(response => {
             setUserID(response.data.jwt)
