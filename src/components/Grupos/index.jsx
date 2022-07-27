@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import styles from './Grupos.module.css'
 import axios from 'axios'
 
-function Grupos ({ setNombreGrupo, userID }) {
+// Para filtrar las personas por los grupos hay que hacerlo de la siguiente manera http://localhost:1337/api/tables?filters[group][NombreGrupo][$contains]=Ejemplo
+
+function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
   const [id, setId] = useState('')
   const [statusClick, setClick] = useState(false)
   const [statusContainerAgregarGrupos, setContainerAgragarGrupos] = useState(
@@ -17,11 +19,12 @@ function Grupos ({ setNombreGrupo, userID }) {
           const data = response.data.data
           data.map(elem => {
             const nombreGrupo = elem.attributes.NombreGrupo
+            const idGrupo = elem.id
             const containerGrupos = document.querySelector('.container_grupos')
             const grupo = document.createElement('div')
             grupo.setAttribute('class', 'Grupos_grupos__eloGA')
             grupo.innerText = `${nombreGrupo}`
-
+            grupo.setAttribute('id', idGrupo)
             const span = document.createElement('span')
             span.setAttribute('class', 'material-symbols-outlined')
             span.innerText = 'folder'
@@ -53,21 +56,20 @@ function Grupos ({ setNombreGrupo, userID }) {
   }
   useEffect(() => {
     const clickGrupo = e => {
-      const click = e.target
       const text = e.target.innerText
       const textTransform = text.replace('folder', '')
-      click.setAttribute('id', textTransform)
       const id = e.target.id
-      setId(id)
+      setGrupoID(id)
       setClick(!statusClick)
       if (statusClick === false) {
         e.target.style =
           'color: var(--background-color); background-color: var(--primary-color)'
+        setNombreGrupo(textTransform)
       } else if (statusClick === true) {
         e.target.style =
           'color: var(--text-color); background-color: var(--background-secondary-color)'
+        setNombreGrupo('')
       }
-      setNombreGrupo(textTransform)
     }
     const grupo = document.querySelectorAll('.container_grupos div')
     grupo.forEach(elem => {

@@ -123,3 +123,13 @@ body.dark .Home_section_formulario__WRdMd input {
 body.dark .Home_section_formulario__WRdMd select {
   background-color: var(--background-color);
 }
+
+#select_group {
+  width: 150px;
+  height: 90%;
+  color: var(--text-color);
+  font-size: var(--font-size__laptop);
+  background-color: var(--background-secondary-color);
+  border: none;
+  outline: none;
+}

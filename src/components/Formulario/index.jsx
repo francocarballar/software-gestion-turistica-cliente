@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './Formulario.module.css'
 import axios from 'axios'
 
-function Formulario ({ nombreGrupo, userID }) {
+function Formulario ({ nombreGrupo, userID, grupoID }) {
   const grupo = `Grupo ${nombreGrupo}`
   const [Apellido, setApellido] = useState('')
   const [Nombre, setNombre] = useState('')
@@ -33,7 +33,8 @@ function Formulario ({ nombreGrupo, userID }) {
           TipoHabitacion: TipoHabitacion,
           NumeroHabitacion: NumeroHabitacion,
           FechaDeIngreso: FechaIngreso,
-          FechaDeEgreso: FechaEgreso
+          FechaDeEgreso: FechaEgreso,
+          group: grupoID
         }
       })
     } catch (error) {

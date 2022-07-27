@@ -1,0 +1,19 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 25px;
+  padding-bottom: 90px;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--background-secondary-color);
+}
+
+@media (min-width: 1024px) {
+  .main {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(100% - 64px);
+  }
+}

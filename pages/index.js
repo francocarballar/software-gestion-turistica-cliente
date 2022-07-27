@@ -7,6 +7,7 @@ import { Grupos } from '../src/components/Grupos'
 
 export default function Home () {
   const [nombreGrupo, setNombreGrupo] = useState('')
+  const [grupoID, setGrupoID] = useState('')
   const [userID, setUserID] = useState([])
   const auth_API = 'http://localhost:1337/api/auth/local'
   useEffect(() => {
@@ -39,10 +40,18 @@ export default function Home () {
       <main className={styles.main}>
         <div className={styles.container_sections}>
           <section className={styles.section_formulario}>
-            <Formulario nombreGrupo={nombreGrupo} userID={userID} />
+            <Formulario
+              nombreGrupo={nombreGrupo}
+              userID={userID}
+              grupoID={grupoID}
+            />
           </section>
           <section className={styles.section_grupos}>
-            <Grupos setNombreGrupo={setNombreGrupo} userID={userID} />
+            <Grupos
+              setNombreGrupo={setNombreGrupo}
+              userID={userID}
+              setGrupoID={setGrupoID}
+            />
           </section>
         </div>
       </main>
