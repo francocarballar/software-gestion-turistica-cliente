@@ -27,6 +27,7 @@ function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
             grupo.setAttribute('id', idGrupo)
             const span = document.createElement('span')
             span.setAttribute('class', 'material-symbols-outlined')
+            span.setAttribute('translate', 'no')
             span.innerText = 'folder'
             grupo.appendChild(span)
             containerGrupos.appendChild(grupo)
