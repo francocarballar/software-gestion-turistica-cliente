@@ -82,10 +82,10 @@ function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
     const containerGrupos = document.querySelector('.container_grupos')
     const grupo = document.createElement('div')
     grupo.setAttribute('class', 'Grupos_grupos__eloGA')
-    grupo.setAttribute('translate', 'no')
     grupo.innerText = `${inputGroupValue}`
     const span = document.createElement('span')
     span.setAttribute('class', 'material-symbols-outlined')
+    span.setAttribute('translate', 'no')
     span.innerText = 'folder'
     grupo.appendChild(span)
     containerGrupos.appendChild(grupo)
