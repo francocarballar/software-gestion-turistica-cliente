@@ -4,7 +4,7 @@ import axios from 'axios'
 
 function Tab ({ filterGroupAPI, setFilterGroupAPI }) {
   const [cantidadPax, setCantidadPax] = useState(0)
-  let groups_API = 'http://localhost:1337/api/groups'
+  let groups_API = 'https://software-gestion-turistica.herokuapp.com/api/groups'
   useEffect(() => {
     const getGroups = async () => {
       try {
@@ -14,7 +14,7 @@ function Tab ({ filterGroupAPI, setFilterGroupAPI }) {
             const select = document.querySelector('#select_group')
             const value = select.value
             setFilterGroupAPI(
-              `http://localhost:1337/api/tables?filters[group][NombreGrupo][$contains]=${value}`
+              `https://software-gestion-turistica.herokuapp.com/api/tables?filters[group][NombreGrupo][$contains]=${value}`
             )
             const option = document.createElement('option')
             option.innerText = group.attributes.NombreGrupo
@@ -55,7 +55,7 @@ function Tab ({ filterGroupAPI, setFilterGroupAPI }) {
             id='select_group'
             onChange={e => {
               setFilterGroupAPI(
-                `http://localhost:1337/api/tables?filters[group][NombreGrupo][$contains]=${e.target.value}`
+                `https://software-gestion-turistica.herokuapp.com/api/tables?filters[group][NombreGrupo][$contains]=${e.target.value}`
               )
             }}
           ></select>

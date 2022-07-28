@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './Grupos.module.css'
 import axios from 'axios'
 
-// Para filtrar las personas por los grupos hay que hacerlo de la siguiente manera http://localhost:1337/api/tables?filters[group][NombreGrupo][$contains]=Ejemplo
+// Para filtrar las personas por los grupos hay que hacerlo de la siguiente manera https://software-gestion-turistica.herokuapp.com/api/tables?filters[group][NombreGrupo][$contains]=Ejemplo
 
 function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
   const [id, setId] = useState('')
@@ -11,7 +11,7 @@ function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
     false
   )
   const [inputGroupValue, setInputGroupValue] = useState('')
-  let groups_API = 'http://localhost:1337/api/groups'
+  let groups_API = 'https://software-gestion-turistica.herokuapp.com/api/groups'
   useEffect(() => {
     const getGroups = async () => {
       try {
@@ -61,14 +61,13 @@ function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
       const id = e.target.id
       setGrupoID(id)
       setClick(!statusClick)
+      setNombreGrupo(textTransform)
       if (statusClick === false) {
         e.target.style =
           'color: var(--background-color); background-color: var(--primary-color)'
-        setNombreGrupo(textTransform)
       } else if (statusClick === true) {
         e.target.style =
           'color: var(--text-color); background-color: var(--background-secondary-color)'
-        setNombreGrupo('')
       }
     }
     const grupo = document.querySelectorAll('.container_grupos div')

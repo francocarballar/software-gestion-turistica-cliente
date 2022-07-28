@@ -12,7 +12,8 @@ function Formulario ({ nombreGrupo, userID, grupoID }) {
   const [NumeroHabitacion, setNumeroHabitacion] = useState('')
   const [FechaIngreso, setFechaIngreso] = useState('')
   const [FechaEgreso, setFechaEgreso] = useState('')
-  const tables_API = 'http://localhost:1337/api/tables'
+  const tables_API =
+    'https://software-gestion-turistica.herokuapp.com/api/tables'
   useEffect(() => {
     const inputTipoHabitacion = document.querySelector('#TipoHabitacion')
     setTipoHabitacion(inputTipoHabitacion.value)
