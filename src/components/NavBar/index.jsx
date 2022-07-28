@@ -35,16 +35,20 @@ function NavBar ({ setSettings, statusSettings }) {
     <nav className={styles.navBar}>
       <ul>
         <li className={styles.menu} title='Menu'>
-          <span className='material-symbols-outlined'>menu</span>
+          <span className='material-symbols-outlined' translate='no'>
+            menu
+          </span>
         </li>
         <Link href='/'>
           <li title='Home' onClick={clickHome} style={styleHome}>
-            <span className='material-symbols-outlined'>home</span>
+            <span className='material-symbols-outlined' translate='no'>
+              home
+            </span>
           </li>
         </Link>
         <Link href='/rooming'>
           <li title='Rooming' onClick={clickBed} style={styleBed}>
-            <span className='material-symbols-outlined'>
+            <span className='material-symbols-outlined' translate='no'>
               airline_seat_individual_suite
             </span>
           </li>
@@ -55,7 +59,9 @@ function NavBar ({ setSettings, statusSettings }) {
           onClick={clickSettings}
           style={styleSettings}
         >
-          <span className='material-symbols-outlined'>settings</span>
+          <span className='material-symbols-outlined' translate='no'>
+            settings
+          </span>
         </li>
       </ul>
     </nav>
