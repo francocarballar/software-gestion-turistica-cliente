@@ -90,6 +90,7 @@
 
 .container .grupos input {
   position: absolute;
+  top: calc(50% - 12px);
   right: 15px;
   padding: 5px;
   font-size: var(--font-size__laptop);

@@ -133,3 +133,13 @@ body.dark .Home_section_formulario__WRdMd select {
   border: none;
   outline: none;
 }
+
+.grupoActive {
+  color: var(--background-color) !important;
+  background-color: var(--primary-color);
+}
+
+.grupoDisabled {
+  color: var(--text-color);
+  background-color: var(--background-secondary-color);
+}

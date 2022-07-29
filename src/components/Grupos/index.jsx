@@ -5,28 +5,11 @@ import axios from 'axios'
 // Para filtrar las personas por los grupos hay que hacerlo de la siguiente manera https://software-gestion-turistica.herokuapp.com/api/tables?filters[group][NombreGrupo][$contains]=Ejemplo
 
 function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
-  const [id, setId] = useState('')
-  const [statusClick, setClick] = useState(false)
   const [statusContainerAgregarGrupos, setContainerAgragarGrupos] = useState(
     false
   )
   const [inputGroupValue, setInputGroupValue] = useState('')
   let groups_API = 'https://software-gestion-turistica.herokuapp.com/api/groups'
-  const clickGrupo = e => {
-    const text = e.target.innerText
-    const textTransform = text.replace('folder', '')
-    const id = e.target.id
-    setGrupoID(id)
-    setClick(!statusClick)
-    setNombreGrupo(textTransform)
-    if (statusClick === false) {
-      e.target.style =
-        'color: var(--background-color); background-color: var(--primary-color)'
-    } else if (statusClick === true) {
-      e.target.style =
-        'color: var(--text-color); background-color: var(--background-secondary-color)'
-    }
-  }
   useEffect(() => {
     const getGroups = async () => {
       try {
@@ -38,10 +21,17 @@ function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
             const containerGrupos = document.querySelector('.container_grupos')
             const div = document.createElement('div')
             div.setAttribute('class', 'Grupos_grupos__eloGA')
-            div.onclick = clickGrupo
             div.setAttribute('id', idGrupo)
             const grupo = document.createElement('div')
             grupo.innerText = `${nombreGrupo}`
+            grupo.onclick = e => {
+              const text = e.target.innerText
+              const textTransform = text.replace('folder', '')
+              const id = div.id
+              setGrupoID(id)
+              setNombreGrupo(textTransform)
+              grupo.setAttribute('class', 'grupoActive')
+            }
             div.appendChild(grupo)
             const span = document.createElement('span')
             span.setAttribute('class', 'material-symbols-outlined')
@@ -52,9 +42,7 @@ function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
             buttonClose.type = 'button'
             buttonClose.value = 'X'
             buttonClose.onclick = () => {
-              setNombreGrupo('')
-              div.style =
-                'color: var(--text-color); background-color: var(--background-secondary-color)'
+              grupo.setAttribute('class', 'grupoDisabled')
             }
             div.appendChild(buttonClose)
             containerGrupos.appendChild(div)
@@ -82,7 +70,6 @@ function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
       })
       .catch(error => console.log(error))
   }
-  console.log('done')
   const agregarGrupo = () => {
     setContainerAgragarGrupos(true)
   }
