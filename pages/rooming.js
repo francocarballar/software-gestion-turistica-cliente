@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Rooming.module.css'
-import axios from 'axios'
 import { Tab } from '../src/components/Tab'
 import { ContainerRooming } from '../src/components/ContainerRooming'
 

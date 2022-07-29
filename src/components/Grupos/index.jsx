@@ -12,6 +12,21 @@ function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
   )
   const [inputGroupValue, setInputGroupValue] = useState('')
   let groups_API = 'https://software-gestion-turistica.herokuapp.com/api/groups'
+  const clickGrupo = e => {
+    const text = e.target.innerText
+    const textTransform = text.replace('folder', '')
+    const id = e.target.id
+    setGrupoID(id)
+    setClick(!statusClick)
+    setNombreGrupo(textTransform)
+    if (statusClick === false) {
+      e.target.style =
+        'color: var(--background-color); background-color: var(--primary-color)'
+    } else if (statusClick === true) {
+      e.target.style =
+        'color: var(--text-color); background-color: var(--background-secondary-color)'
+    }
+  }
   useEffect(() => {
     const getGroups = async () => {
       try {
@@ -21,16 +36,28 @@ function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
             const nombreGrupo = elem.attributes.NombreGrupo
             const idGrupo = elem.id
             const containerGrupos = document.querySelector('.container_grupos')
+            const div = document.createElement('div')
+            div.setAttribute('class', 'Grupos_grupos__eloGA')
+            div.onclick = clickGrupo
+            div.setAttribute('id', idGrupo)
             const grupo = document.createElement('div')
-            grupo.setAttribute('class', 'Grupos_grupos__eloGA')
             grupo.innerText = `${nombreGrupo}`
-            grupo.setAttribute('id', idGrupo)
+            div.appendChild(grupo)
             const span = document.createElement('span')
             span.setAttribute('class', 'material-symbols-outlined')
             span.setAttribute('translate', 'no')
             span.innerText = 'folder'
             grupo.appendChild(span)
-            containerGrupos.appendChild(grupo)
+            const buttonClose = document.createElement('input')
+            buttonClose.type = 'button'
+            buttonClose.value = 'X'
+            buttonClose.onclick = () => {
+              setNombreGrupo('')
+              div.style =
+                'color: var(--text-color); background-color: var(--background-secondary-color)'
+            }
+            div.appendChild(buttonClose)
+            containerGrupos.appendChild(div)
           })
         })
       } catch (error) {
@@ -55,27 +82,7 @@ function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
       })
       .catch(error => console.log(error))
   }
-  useEffect(() => {
-    const clickGrupo = e => {
-      const text = e.target.innerText
-      const textTransform = text.replace('folder', '')
-      const id = e.target.id
-      setGrupoID(id)
-      setClick(!statusClick)
-      setNombreGrupo(textTransform)
-      if (statusClick === false) {
-        e.target.style =
-          'color: var(--background-color); background-color: var(--primary-color)'
-      } else if (statusClick === true) {
-        e.target.style =
-          'color: var(--text-color); background-color: var(--background-secondary-color)'
-      }
-    }
-    const grupo = document.querySelectorAll('.container_grupos div')
-    grupo.forEach(elem => {
-      elem.addEventListener('click', clickGrupo)
-    })
-  })
+  console.log('done')
   const agregarGrupo = () => {
     setContainerAgragarGrupos(true)
   }

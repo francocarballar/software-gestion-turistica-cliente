@@ -66,14 +66,37 @@
 
 .container .grupos {
   display: flex;
-  flex-direction: row-reverse;
   justify-content: flex-end;
   align-items: center;
-  padding: 10px;
+  position: relative;
   width: 100%;
   color: var(--text-color);
   font-size: var(--font-size__laptop);
   border-radius: 5px;
+  cursor: pointer;
+}
+
+.container .grupos div {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+  color: var(--text-color);
+  font-size: var(--font-size__laptop);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.container .grupos input {
+  position: absolute;
+  right: 15px;
+  padding: 5px;
+  font-size: var(--font-size__laptop);
+  font-weight: 900;
+  color: var(--text-color);
+  background-color: transparent;
+  border: none;
   cursor: pointer;
 }
 
