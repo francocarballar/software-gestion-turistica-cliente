@@ -1,6 +1,6 @@
-# Batatabit
+# Software de gestión turística
 
-Proyecto de maquetación basado en un prototipo de Figma, siguiendo la metodología de mobile first. Se trata de una plataforma para comprar y vender criptomonedas.
+Proyecto para la gestión turistica
 
 ## Ver está página:
 
