@@ -1,0 +1,28 @@
+.inputRadioGroup {
+    display: none;
+}
+
+.inputRadioGroup:checked+label {
+    color: var(--background-color) !important;
+    background-color: var(--primary-color) !important;
+}
+
+.grupos {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    color: var(--text-color);
+    font-size: var(--font-size__laptop);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.grupos:hover {
+    background-color: rgb(0, 0, 0, 10%);
+}
+
+.grupos span {
+    margin-right: 10px;
+}

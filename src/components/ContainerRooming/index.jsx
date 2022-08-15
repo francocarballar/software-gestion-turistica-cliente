@@ -69,7 +69,7 @@ function ContainerRooming ({ filterGroupAPI }) {
             <td className={styles.td_OUT}>OUT</td>
           </tr>
         </tbody>
-        <tbody id='tbody'></tbody>
+        <tbody id='tbody' />
       </table>
     </section>
   )

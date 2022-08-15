@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './Grupos.module.css'
 import axios from 'axios'
+import { Group } from '../Group'
 
 // Para filtrar las personas por los grupos hay que hacerlo de la siguiente manera https://software-gestion-turistica.herokuapp.com/api/tables?filters[group][NombreGrupo][$contains]=Ejemplo
 
@@ -12,51 +13,17 @@ function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
   let groups_API = 'https://software-gestion-turistica.herokuapp.com/api/groups'
   useEffect(() => {
     const getGroups = async () => {
-      try {
-        await axios.get(groups_API).then(response => {
-          const data = response.data.data
-          data.map(elem => {
-            const nombreGrupo = elem.attributes.NombreGrupo
-            const idGrupo = elem.id
-            const containerGrupos = document.querySelector('.container_grupos')
-            const div = document.createElement('div')
-            div.setAttribute('class', 'Grupos_grupos__eloGA')
-            div.setAttribute('id', idGrupo)
-            const grupo = document.createElement('div')
-            grupo.innerText = `${nombreGrupo}`
-            grupo.onclick = e => {
-              const text = e.target.innerText
-              const textTransform = text.replace('folder', '')
-              const id = div.id
-              setGrupoID(id)
-              setNombreGrupo(textTransform)
-              grupo.setAttribute('class', 'grupoActive')
-            }
-            div.appendChild(grupo)
-            const span = document.createElement('span')
-            span.setAttribute('class', 'material-symbols-outlined')
-            span.setAttribute('translate', 'no')
-            span.innerText = 'folder'
-            grupo.appendChild(span)
-            const buttonClose = document.createElement('input')
-            buttonClose.type = 'button'
-            buttonClose.value = 'X'
-            buttonClose.onclick = () => {
-              grupo.setAttribute('class', 'grupoDisabled')
-            }
-            div.appendChild(buttonClose)
-            containerGrupos.appendChild(div)
-          })
+      await axios
+        .get(groups_API, {
+          headers: {
+            'Content-Type': 'application/json',
+            Athorization: `Bearer ${userID}`
+          }
         })
-      } catch (error) {
-        console.log(error)
-      }
+        .then(response => console.log(response))
     }
     getGroups()
-    return () => {
-      groups_API = ''
-    }
-  }, [])
+  }, [userID, groups_API])
   const crearGrupo = async () => {
     await axios
       .post(groups_API, {
@@ -87,6 +54,13 @@ function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
     setContainerAgragarGrupos(false)
     crearGrupo()
   }
+  const clickGrupo = e => {
+    const text = e.target.innerText
+    const textTransform = text.replace('folder', '')
+    const id = e.target.id
+    setGrupoID(id)
+    setNombreGrupo(textTransform)
+  }
   return (
     <div className={styles.container}>
       <div>
@@ -113,7 +87,16 @@ function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
           </button>
         </div>
       )}
-      <div className='container_grupos'></div>
+      {/* <div className='container_grupos'>
+        {data.map(grupo => (
+          <Group
+            name={grupo.attributes.NombreGrupo}
+            clickGrupo={clickGrupo}
+            key={grupo.id}
+            id={grupo.id}
+          />
+        ))}
+      </div> */}
     </div>
   )
 }

@@ -58,7 +58,7 @@ function Tab ({ filterGroupAPI, setFilterGroupAPI }) {
                 `https://software-gestion-turistica.herokuapp.com/api/tables?filters[group][NombreGrupo][$contains]=${e.target.value}`
               )
             }}
-          ></select>
+          />
         </div>
       </div>
       <div className={styles.container_pax}>

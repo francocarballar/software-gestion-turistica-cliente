@@ -17,7 +17,7 @@ function Formulario ({ nombreGrupo, userID, grupoID }) {
   useEffect(() => {
     const inputTipoHabitacion = document.querySelector('#TipoHabitacion')
     setTipoHabitacion(inputTipoHabitacion.value)
-  })
+  }, [])
   const submitForm = async e => {
     e.preventDefault()
     try {
@@ -27,12 +27,12 @@ function Formulario ({ nombreGrupo, userID, grupoID }) {
           Athorization: `Bearer ${userID}`
         },
         data: {
-          Apellido: Apellido,
-          Nombre: Nombre,
-          DNI: DNI,
-          Nacimiento: Nacimiento,
-          TipoHabitacion: TipoHabitacion,
-          NumeroHabitacion: NumeroHabitacion,
+          Apellido,
+          Nombre,
+          DNI,
+          Nacimiento,
+          TipoHabitacion,
+          NumeroHabitacion,
           FechaDeIngreso: FechaIngreso,
           FechaDeEgreso: FechaEgreso,
           group: grupoID

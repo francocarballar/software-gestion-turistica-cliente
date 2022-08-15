@@ -9,7 +9,8 @@ export default function Home () {
   const [nombreGrupo, setNombreGrupo] = useState('')
   const [grupoID, setGrupoID] = useState('')
   const [userID, setUserID] = useState([])
-  const auth_API = 'http://localhost:1337/api/auth/local'
+  const auth_API =
+    'https://software-gestion-turistica.herokuapp.com/api/auth/local'
   useEffect(() => {
     const api = async () => {
       try {
@@ -30,6 +31,7 @@ export default function Home () {
     }
     api()
   })
+  console.log(userID)
   return (
     <>
       <Head>

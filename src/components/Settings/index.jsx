@@ -126,21 +126,21 @@ function Settings ({ statusSettings, setSettings }) {
           <div>
             <p>Elige un color:</p>
             <ul className={styles.container_colours}>
-              <li className={styles.purple} onClick={changePurple}></li>
-              <li className={styles.yellow} onClick={changeYellow}></li>
-              <li className={styles.orange} onClick={changeOrange}></li>
-              <li className={styles.red} onClick={changeRed}></li>
-              <li className={styles.pink} onClick={changePink}></li>
-              <li className={styles.violet} onClick={changeViolet}></li>
-              <li className={styles.lightblue} onClick={changeLightblue}></li>
-              <li className={styles.aquamarine} onClick={changeAquamarine}></li>
-              <li className={styles.green} onClick={changeGreen}></li>
+              <li className={styles.purple} onClick={changePurple} />
+              <li className={styles.yellow} onClick={changeYellow} />
+              <li className={styles.orange} onClick={changeOrange} />
+              <li className={styles.red} onClick={changeRed} />
+              <li className={styles.pink} onClick={changePink} />
+              <li className={styles.violet} onClick={changeViolet} />
+              <li className={styles.lightblue} onClick={changeLightblue} />
+              <li className={styles.aquamarine} onClick={changeAquamarine} />
+              <li className={styles.green} onClick={changeGreen} />
             </ul>
           </div>
           <div className={styles.container_darkMode}>
             <p>Dark mode:</p>
             <label className={styles.toggle_dark_mode} onClick={darkMode}>
-              <span id={styles.theme}></span>
+              <span id={styles.theme} />
             </label>
           </div>
         </div>
