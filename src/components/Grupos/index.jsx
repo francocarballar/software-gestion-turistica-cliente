@@ -21,15 +21,17 @@ function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
       Authorization: `Bearer ${userID}`
     }
   }
-  const getGroups = async () => {
-    await axios
-      .request(options)
-      .then(response => {
-        setGrupos(response.data.data)
-      })
-      .catch(error => console.log(error))
-  }
-  getGroups()
+  useEffect(() => {
+    const getGroups = async () => {
+      await axios
+        .request(options)
+        .then(response => {
+          setGrupos(response.data.data)
+        })
+        .catch(error => console.log(error))
+    }
+    getGroups()
+  }, [])
   const crearGrupo = async () => {
     await axios
       .post(groups_API, {
