@@ -1,0 +1,25 @@
+.button {
+    margin-top: 15px;
+    padding: 8px 25px;
+    width: 10rem;
+    height: auto;
+    border-radius: 1rem;
+    background-color: var(--primary-color);
+    font-size: 1.5rem;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: white;
+    border-color: transparent;
+    box-shadow: 0rem 0.2rem 0.8rem 0.1rem rgb(0 0 0 / 60%);
+    cursor: pointer;
+    text-align: center;
+}
+
+.button:hover {
+    color: white;
+    background-color: var(--hover-button);
+    box-shadow: none;
+}
+
+.button:active {
+    transform: scale(0.9);
+}

@@ -13,16 +13,14 @@
   width: 100%;
   color: var(--text-color);
   font-size: var(--font-size__laptop);
-  overflow: scroll;
+  overflow-x: scroll;
 }
 
 .table_container tbody {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   text-align: center;
-  width: 100%;
 }
 
 .table_container tr {
@@ -44,6 +42,12 @@
   height: 55px;
 }
 
+.table_container h3 {
+  margin: 20px;
+  width: 100%;
+  text-align: center
+}
+
 .tr_type {
   background-color: var(--primary-color);
 }
@@ -54,10 +58,15 @@
 
 @media (min-width: 768px) {
   .table_container {
-    overflow: hidden;
+      overflow: hidden;
+  }
+
+  .table_container tbody {
+    align-items: center;
+    width: 100%;
   }
 
   .table_container tr {
-    width: 100%;
+      width: 100%;
   }
 }

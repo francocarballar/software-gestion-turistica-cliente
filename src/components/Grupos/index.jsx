@@ -10,20 +10,26 @@ function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
     false
   )
   const [inputGroupValue, setInputGroupValue] = useState('')
-  let groups_API = 'https://software-gestion-turistica.herokuapp.com/api/groups'
-  useEffect(() => {
-    const getGroups = async () => {
-      await axios
-        .get(groups_API, {
-          headers: {
-            'Content-Type': 'application/json',
-            Athorization: `Bearer ${userID}`
-          }
-        })
-        .then(response => console.log(response))
+  const [grupos, setGrupos] = useState([])
+  const groups_API =
+    'https://software-gestion-turistica.herokuapp.com/api/groups'
+  const options = {
+    method: 'GET',
+    url: groups_API,
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${userID}`
     }
-    getGroups()
-  }, [userID, groups_API])
+  }
+  const getGroups = async () => {
+    await axios
+      .request(options)
+      .then(response => {
+        setGrupos(response.data.data)
+      })
+      .catch(error => console.log(error))
+  }
+  getGroups()
   const crearGrupo = async () => {
     await axios
       .post(groups_API, {
@@ -87,8 +93,8 @@ function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
           </button>
         </div>
       )}
-      {/* <div className='container_grupos'>
-        {data.map(grupo => (
+      <div className='container_grupos'>
+        {grupos.map(grupo => (
           <Group
             name={grupo.attributes.NombreGrupo}
             clickGrupo={clickGrupo}
@@ -96,7 +102,7 @@ function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
             id={grupo.id}
           />
         ))}
-      </div> */}
+      </div>
     </div>
   )
 }

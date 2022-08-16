@@ -3,7 +3,6 @@
 }
 
 .inputRadioGroup:checked+label {
-    color: var(--background-color) !important;
     background-color: var(--primary-color) !important;
 }
 
@@ -23,6 +22,9 @@
     background-color: rgb(0, 0, 0, 10%);
 }
 
-.grupos span {
+.grupos svg {
+    width: 25px;
+    height: 25px;
+    color: var(--text-color);
     margin-right: 10px;
 }

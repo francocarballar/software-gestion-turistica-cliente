@@ -37,6 +37,15 @@
   cursor: pointer;
 }
 
+.navBar svg {
+  padding: 10px;
+  width: 44px;
+  height: 44px;
+  color: var(--text-color);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .menu {
   display: none;
 }

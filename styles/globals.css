@@ -6,6 +6,7 @@
   --background-color: #fff;
   --background-secondary-color: #eeeeee;
   --primary-color: #0ab4ff;
+  --hover-button: #138bbe;
   --text-color: #000;
   --scroll-size: 10px;
   --scrollbar-thumb__background-color: #3f474d;
@@ -30,38 +31,47 @@
 
 [data-color='purple'] {
   --primary-color: rgb(123, 104, 238);
+  --hover-button: rgb(97, 75, 223);
 }
 
 [data-color='yellow'] {
   --primary-color: rgb(255, 161, 47);
+  --hover-button: rgb(219, 139, 40);
 }
 
 [data-color='orange'] {
   --primary-color: rgb(255, 87, 34);
+  --hover-button: rgb(207, 66, 24);
 }
 
 [data-color='red'] {
   --primary-color: rgb(244, 44, 44);
+  --hover-button: rgb(207, 34, 34);
 }
 
 [data-color='pink'] {
   --primary-color: rgb(255, 0, 252);
+  --hover-button: rgb(206, 8, 202);
 }
 
 [data-color='violet'] {
   --primary-color: rgb(65, 105, 225);
+  --hover-button: rgb(57, 92, 197);
 }
 
 [data-color='lightblue'] {
   --primary-color: rgb(10, 180, 255);
+  --hover-button: rgb(9, 153, 214);
 }
 
 [data-color='aquamarine'] {
   --primary-color: rgb(7, 160, 146);
+  --hover-button: rgb(8, 122, 113);
 }
 
 [data-color='green'] {
   --primary-color: rgb(46, 165, 44);
+  --hover-button: rgb(33, 136, 31);
 }
 
 * {
@@ -78,22 +88,22 @@ html {
   background-color: var(--scrollbar-track__background-color);
 }
 
-html::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: var(--scroll-size);
   height: var(--scroll-size);
   display: block;
 }
 
-html::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   background-color: var(--scrollbar-thumb__background-color);
   border-radius: 5px;
 }
 
-html::-webkit-scrollbar-thumb:hover {
+*::-webkit-scrollbar-thumb:hover {
   background-color: var(--scrollbar-thum__hover);
 }
 
-html::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
   background-color: var(--scrollbar-track__background-color);
   border-radius: 5px;
 }

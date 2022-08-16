@@ -4,7 +4,7 @@ import styles from '../styles/Rooming.module.css'
 import { Tab } from '../src/components/Tab'
 import { ContainerRooming } from '../src/components/ContainerRooming'
 
-export default function Rooming () {
+export default function Rooming ({ userID }) {
   const [filterGroupAPI, setFilterGroupAPI] = useState('')
   return (
     <>
@@ -17,8 +17,9 @@ export default function Rooming () {
         <Tab
           filterGroupAPI={filterGroupAPI}
           setFilterGroupAPI={setFilterGroupAPI}
+          userID={userID}
         />
-        <ContainerRooming filterGroupAPI={filterGroupAPI} />
+        <ContainerRooming filterGroupAPI={filterGroupAPI} userID={userID} />
       </main>
     </>
   )

@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './Group.module.css'
+import { MdFolder } from 'react-icons/md'
 
 function Group ({ name, clickGrupo, id }) {
   return (
@@ -16,9 +17,7 @@ function Group ({ name, clickGrupo, id }) {
         id={id}
         htmlFor={id}
       >
-        <span className='material-symbols-outlined' translate='no'>
-          folder
-        </span>
+        <MdFolder />
         {name}
       </label>
     </>

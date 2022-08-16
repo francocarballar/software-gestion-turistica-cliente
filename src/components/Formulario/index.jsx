@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './Formulario.module.css'
 import axios from 'axios'
+import Button from '../Button'
 
 function Formulario ({ nombreGrupo, userID, grupoID }) {
   const grupo = `Grupo ${nombreGrupo}`
@@ -144,9 +145,7 @@ function Formulario ({ nombreGrupo, userID, grupoID }) {
           />
         </label>
         <label htmlFor='Enviar' className={styles.labelEnviar}>
-          <button type='submit' name='Enviar' id={styles.enviar}>
-            Enviar
-          </button>
+          <Button type='submit' name='Enviar' text='Enviar' />
         </label>
       </form>
     </>

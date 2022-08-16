@@ -1,37 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import axios from 'axios'
 import { Formulario } from '../src/components/Formulario'
 import { Grupos } from '../src/components/Grupos'
 
-export default function Home () {
+export default function Home ({ userID }) {
   const [nombreGrupo, setNombreGrupo] = useState('')
   const [grupoID, setGrupoID] = useState('')
-  const [userID, setUserID] = useState([])
-  const auth_API =
-    'https://software-gestion-turistica.herokuapp.com/api/auth/local'
-  useEffect(() => {
-    const api = async () => {
-      try {
-        await axios
-          .post(auth_API, {
-            identifier: 'juanitoalcachofa@gmail.com',
-            password: 'Password123'
-          })
-          .then(response => {
-            setUserID(response.data.jwt)
-          })
-          .catch(error => {
-            console.log('An error occurred:', error.response)
-          })
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    api()
-  })
-  console.log(userID)
   return (
     <>
       <Head>

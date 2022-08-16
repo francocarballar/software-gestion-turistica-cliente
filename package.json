@@ -13,6 +13,7 @@
     "next": "^12.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0",
     "standard": "^17.0.0"
   },
   "devDependencies": {

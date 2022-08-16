@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import styles from './NavBar.module.css'
+import { MdMenu } from 'react-icons/md'
+import { MdHomeFilled } from 'react-icons/md'
+import { MdAirlineSeatIndividualSuite } from 'react-icons/md'
+import { MdSettings } from 'react-icons/md'
 
 function NavBar ({ setSettings, statusSettings }) {
   const styleSpan = {
@@ -35,22 +39,16 @@ function NavBar ({ setSettings, statusSettings }) {
     <nav className={styles.navBar}>
       <ul>
         <li className={styles.menu} title='Menu'>
-          <span className='material-symbols-outlined' translate='no'>
-            menu
-          </span>
+          <MdMenu />
         </li>
         <Link href='/'>
           <li title='Home' onClick={clickHome} style={styleHome}>
-            <span className='material-symbols-outlined' translate='no'>
-              home
-            </span>
+            <MdHomeFilled />
           </li>
         </Link>
         <Link href='/rooming'>
           <li title='Rooming' onClick={clickBed} style={styleBed}>
-            <span className='material-symbols-outlined' translate='no'>
-              airline_seat_individual_suite
-            </span>
+            <MdAirlineSeatIndividualSuite />
           </li>
         </Link>
         <li
@@ -59,9 +57,7 @@ function NavBar ({ setSettings, statusSettings }) {
           onClick={clickSettings}
           style={styleSettings}
         >
-          <span className='material-symbols-outlined' translate='no'>
-            settings
-          </span>
+          <MdSettings />
         </li>
       </ul>
     </nav>
