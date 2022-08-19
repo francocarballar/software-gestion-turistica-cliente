@@ -33,7 +33,6 @@
 
 .tab:active .tab-box {
   background-color: #eee;
-  background-image: linear-gradient(top, #ccc, #ddd 3%, rgba(#eee, 0.5));
   box-shadow: 0 0 2px 0 #fff inset;
 }
 

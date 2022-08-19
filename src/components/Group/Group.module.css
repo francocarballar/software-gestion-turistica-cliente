@@ -3,7 +3,12 @@
 }
 
 .inputRadioGroup:checked+label {
+    color: var(--background-secondary-color) !important;
     background-color: var(--primary-color) !important;
+}
+
+.inputRadioGroup:checked+label svg {
+    color: var(--background-secondary-color) !important;
 }
 
 .grupos {
