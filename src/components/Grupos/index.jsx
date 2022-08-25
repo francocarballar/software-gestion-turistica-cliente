@@ -6,6 +6,7 @@ import { Group } from '../Group'
 // Para filtrar las personas por los grupos hay que hacerlo de la siguiente manera https://software-gestion-turistica.herokuapp.com/api/tables?filters[group][NombreGrupo][$contains]=Ejemplo
 
 function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
+  const [loadingGroups, setLoadingGroups] = useState(true)
   const [statusContainerAgregarGrupos, setContainerAgragarGrupos] = useState(
     false
   )
@@ -31,6 +32,7 @@ function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
         .catch(error => console.log(error))
     }
     getGroups()
+    setLoadingGroups(false)
   }, [])
   const crearGrupo = async () => {
     await axios
@@ -95,6 +97,7 @@ function Grupos ({ setNombreGrupo, userID, setGrupoID }) {
           </button>
         </div>
       )}
+      {loadingGroups && <p>Cargando los grupos...</p>}
       <div className='container_grupos'>
         {grupos.map(grupo => (
           <Group

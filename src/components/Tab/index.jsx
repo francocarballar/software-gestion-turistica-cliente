@@ -37,8 +37,6 @@ function Tab ({ filterGroupAPI, setFilterGroupAPI }) {
         await axios.get(filterGroupAPI).then(response => {
           const data = response.data.data
           setCantidadPax(data.length)
-          console.log(data.length)
-          data.map(data => console.log(data))
         })
       } catch (error) {
         console.log(error)

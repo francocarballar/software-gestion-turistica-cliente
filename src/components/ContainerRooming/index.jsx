@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './ContainerRooming.module.css'
 import axios from 'axios'
 
 function ContainerRooming ({ filterGroupAPI }) {
+  const [loadingRooming, setLoadingRooming] = useState(true)
   useEffect(() => {
     const filterGroup = async () => {
       try {
@@ -48,6 +49,7 @@ function ContainerRooming ({ filterGroupAPI }) {
             tbody.appendChild(tr)
           })
         })
+        setLoadingRooming(false)
       } catch (error) {
         console.log(error)
       }
@@ -69,8 +71,9 @@ function ContainerRooming ({ filterGroupAPI }) {
             <td className={styles.td_OUT}>OUT</td>
           </tr>
         </tbody>
-        <tbody id='tbody' />
+        <tbody id='tbody'></tbody>
       </table>
+      {loadingRooming && <p>Se está cargando el rooming...</p>}
     </section>
   )
 }

@@ -5,6 +5,13 @@
   width: 100%;
 }
 
+.section_container p {
+  margin-top: 2.5rem;
+  color: var(--text-color);
+  font-size: 2rem;
+  text-align: center;
+}
+
 .table_container {
   display: flex;
   flex-direction: column;
